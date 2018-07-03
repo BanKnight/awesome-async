@@ -1,0 +1,24 @@
+{
+  "name": "awesome-async",
+  "version": "0.1.0",
+  "description": "a lock for nodejs async code",
+  "main": "lib/index.js",
+  "scripts": {
+    "example": "node example/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BanKnight/awesome-async.git"
+  },
+  "keywords": [
+    "nodejs",
+    "lock",
+    "awesome-async"
+  ],
+  "author": "bansky",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BanKnight/awesome-async/issues"
+  },
+  "homepage": "https://github.com/BanKnight/awesome-async#readme"
+}
