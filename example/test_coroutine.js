@@ -1,35 +1,27 @@
 let awesome = require("../lib")
 
-let players = {}
-
-async function thread(name)
+async function producer()
 {
-    console.log(`${name} start wait`)
+    awesome.wake("consumer", "first")
 
-    let player = await awesome.wait("player")
-
-    if(player == null)
+    for (let i = 0; i < 14; ++i)
     {
-        console.log(`${name} start load player`)
+        await awesome.wait("producer")
 
-        player = { id : 1}
-
-        players[player.id] = player
-
-        awesome.wake("player",player)
-
-        console.log(`${name} stop load player`)
-    }
-    else
-    {
-        console.log(`${name} get the player success`)
+        awesome.wake("consumer", i)
     }
 }
 
-for(let i = 0;i < 5;++i)
+async function consumer()
 {
-    setImmediate(()=>
+    for (let i = 0; i < 15; ++i)
     {
-        thread(`thread_${i}`)
-    })
+        let msg = await awesome.wait("consumer")
+
+        console.log("get msg:" + msg)
+
+        await awesome.wake("producer")
+    }
 }
+setImmediate(consumer)
+setImmediate(producer)
