@@ -6,7 +6,7 @@ async function thread(name)
 {
     console.log(`${name} start wait`)
 
-    let [is_captured, player] = await awesome.capture("player")
+    let [is_captured, player] = await awesome.lead("player")
 
     if (is_captured)
     {
@@ -16,7 +16,7 @@ async function thread(name)
 
         players[player.id] = player
 
-        awesome.share("player", player)
+        awesome.unlead("player", player)
 
         console.log(`${name} stop load player`)
     }
